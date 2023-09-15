@@ -12,5 +12,5 @@
   "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
   "editor.insertSpaces": false,
   "editor.detectIndentation": false,
-  "cSpell.words": ["escalabilidad"]
+  "conventionalCommits.scopes": ["blog"]
 }
