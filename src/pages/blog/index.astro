@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Card from '@components/Card.astro'
+import CardTag from '@components/CardTag.astro'
 
 import { getCollection } from 'astro:content'
 
@@ -9,10 +10,12 @@ const allBlogPosts = await getCollection('blog')
 allBlogPosts.sort((a, b) => {
   return b.data.date.getTime() - a.data.date.getTime()
 })
+
+const allTags = await getCollection('tags')
 ---
 
 <Layout title='Blog'>
-  <div class='flex flex-col gap-2 mt-4'>
+  <section class='flex flex-col gap-2 mt-4'>
     <header>
       <h1 class='text-4xl font-bold text-center mb-6 dark:text-white'>Blog</h1>
     </header>
@@ -26,5 +29,17 @@ allBlogPosts.sort((a, b) => {
         />
       ))
     }
-  </div>
+  </section>
+
+  <section class='mt-10 grid grid-flow-col auto-cols-max gap-4'>
+    {
+      allTags.map((tag) => (
+        <CardTag
+          heading={tag.data.heading}
+          lowerHeading={tag.data.lowerHeading}
+          slug={tag.slug}
+        />
+      ))
+    }
+  </section>
 </Layout>
