@@ -3,7 +3,7 @@ title: ¿Cómo actualizar a la última versión de Git en Windows?
 date: 2023-09-15T21:40:13.587Z
 tags:
   - git
-  - git-bash
+  - terminal
   - windows
 category: trucos
 ---
