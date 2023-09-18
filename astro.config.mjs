@@ -1,28 +1,10 @@
-import { defineConfig } from 'astro/config'
-import tailwind from '@astrojs/tailwind'
-import mdx from '@astrojs/mdx'
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
-import remarkToc from 'remark-toc'
-import remarkCollapse from 'remark-collapse'
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  integrations: [tailwind(), mdx()],
-  markdown: {
-    remarkPlugins: [
-      remarkToc,
-      [
-        remarkCollapse,
-        {
-          test: 'Table of contents'
-        }
-      ]
-    ],
-    shikiConfig: {
-      theme: 'one-dark-pro',
-      wrap: true
-    },
-    extendDefaultPlugins: true
-  }
-})
+  integrations: [tailwind(),react()],
+});
