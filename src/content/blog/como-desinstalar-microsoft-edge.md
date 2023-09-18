@@ -4,7 +4,7 @@ date: 2022-05-22T21:40:13.587Z
 tags:
   - microsoft
   - edge
-	- terminal
+  - terminal
 category: trucos
 ---
 

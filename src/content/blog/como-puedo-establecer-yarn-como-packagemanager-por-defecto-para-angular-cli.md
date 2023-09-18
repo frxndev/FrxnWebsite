@@ -5,7 +5,7 @@ tags:
   - angular
   - npm
   - pnpm
-	- terminal
+  - terminal
 category: programación
 ---
 
