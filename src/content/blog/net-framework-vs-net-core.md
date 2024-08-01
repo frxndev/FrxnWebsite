@@ -1,5 +1,5 @@
 ---
-title: .NET Framework vs .NET Core ¿Cuál es la diferencia?
+title: 'Perspectivas divergentes: .NET Framework y .NET Core y sus implicaciones en el desarrollo.'
 date: 2023-03-15T21:40:13.587Z
 tags:
   - csharp
