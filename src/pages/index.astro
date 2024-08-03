@@ -1,9 +1,26 @@
 ---
+import LinkButton from '@components/LinkButton.astro'
 import Layout from '@layouts/Layout.astro'
 ---
 
 <Layout title='Inicio'>
 	<main class='px-4 py-4'>
 		<h1 class='text-black dark:text-white'></h1>
+
+		<div class='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4'>
+			<LinkButton
+				href='/uuid-generator'
+				icon='astro'
+				title='Generador UUID'
+				description='Genere UUID de la versión 4 para diversos casos de uso, como bases de datos, sistemas distribuidos, aplicaciones web, etc. con nuestro generador de UUID en línea.'
+			/>
+
+			<LinkButton
+				href='/slug-generator'
+				icon='astro'
+				title='Generador de slug'
+				description='Generador de Slug en Línea es una herramienta esencial para desarrolladores y creadores de contenido que necesitan convertir títulos largos o frases en URL amigables, limpias y fáciles de leer. '
+			/>
+		</div>
 	</main>
 </Layout>
