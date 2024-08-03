@@ -44,6 +44,7 @@
     "no-multiple-empty-lines": "off",
     "no-tabs": "off",
     "no-unused-vars": "warn",
-    "quotes": ["warn", "single"]
+    "quotes": ["warn", "single"],
+		"space-before-function-paren": ["error", "none"]
   }
 }
