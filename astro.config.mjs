@@ -5,6 +5,9 @@ import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    inlineStylesheets: 'always'
+  },
   compressHTML: true,
   site: 'https://frxn.pages.dev',
   base: '/',
@@ -14,6 +17,10 @@ export default defineConfig({
   experimental: {
     responsiveImages: true,
     svg: true
+  },
+  prefetch: true,
+  devToolbar: {
+    enabled: false
   },
   integrations: [tailwind(), react()]
 })
