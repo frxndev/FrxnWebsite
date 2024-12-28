@@ -9,9 +9,8 @@ export default defineConfig({
   site: 'https://frxn.pages.dev',
   base: '/',
   optimizeDeps: {
-    include: ['react-compiler-runtime']
+    include: ['react-compiler-runtime', 'react-dom', 'react']
   },
-  prefetch: false,
   experimental: {
     responsiveImages: true,
     svg: true

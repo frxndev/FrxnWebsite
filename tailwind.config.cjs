@@ -1,5 +1,4 @@
 const { withAnimations } = require('animated-tailwindcss') // eslint-disable-line
-const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withAnimations({
@@ -7,6 +6,13 @@ module.exports = withAnimations({
   darkMode: 'class', // or 'media'
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        monserrat: ['Montserrat', 'Inter', 'sans-serif']
+      },
+      colors: {
+        primary: '#5481FF'
+      },
       keyframes: {
         'reduce-header': {
           '100%': {
@@ -34,6 +40,7 @@ module.exports = withAnimations({
         }
       })
     },
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('@midudev/tailwind-animations')
   ]
 })

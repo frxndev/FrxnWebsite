@@ -1,45 +1,28 @@
 ---
-import Layout from '@layouts/Layout.astro'
 import Card from '@components/Card.astro'
 import CardTag from '@components/CardTag.astro'
+import Layout from '@layouts/Layout.astro'
 
 import { getCollection } from 'astro:content'
 
 const allBlogPosts = await getCollection('blog')
 
-allBlogPosts.sort((a, b) => {
-  return b.data.date.getTime() - a.data.date.getTime()
+allBlogPosts.sort((a: any, b: any) => {
+	return b.data.date.getTime() - a.data.date.getTime()
 })
 
 const allTags = await getCollection('tags')
 ---
 
 <Layout title='Blog'>
-  <section class='flex flex-col gap-2 mt-4'>
-    <header>
-      <h1 class='text-4xl font-bold text-center mb-6 dark:text-white'>Blog</h1>
-    </header>
-    {
-      allBlogPosts.map((post) => (
-        <Card
-          title={post.data.title}
-          date={post.data.date}
-          tags={post.data.tags}
-          slug={post.slug}
-        />
-      ))
-    }
-  </section>
+	<section class='flex flex-col gap-2 mt-4'>
+		<header>
+			<h1 class='text-4xl font-bold text-center mb-6 dark:text-white'>Blog</h1>
+		</header>
+		{allBlogPosts.map((post: any) => <Card title={post.data.title} date={post.data.date} tags={post.data.tags} slug={post.slug} />)}
+	</section>
 
-  <section class='mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2'>
-    {
-      allTags.map((tag) => (
-        <CardTag
-          heading={tag.data.heading}
-          lowerHeading={tag.data.lowerHeading}
-          slug={tag.slug}
-        />
-      ))
-    }
-  </section>
+	<section class='mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2'>
+		{allTags.map((tag: any) => <CardTag heading={tag.data.heading} lowerHeading={tag.data.lowerHeading} slug={tag.slug} />)}
+	</section>
 </Layout>

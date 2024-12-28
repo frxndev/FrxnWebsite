@@ -1,12 +1,87 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import { UUIDGenerator } from '@components/UUIDGenerator'
+import Clipboard from '@/icons/clipboard.astro'
+import Refresh from '@/icons/refresh.astro'
+import Snackbar from '@/components/Snackbar.astro'
+import Tooltip from '@/components/Tooltip.astro'
 ---
+
+<script>
+	import { $ } from '@/lib/dom-selector'
+
+	document.addEventListener('astro:page-load', () => {
+		const $uuidInput = $('#uuid-input') as HTMLInputElement
+		const $generateButton = $('#generate-button') as HTMLButtonElement
+		const $clipboardButton = $('#clipboard-button') as HTMLButtonElement
+
+		function onGenerateUUID() {
+			return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+				const r = (Math.random() * 16) | 0
+				const v = c === 'x' ? r : (r & 0x3) | 0x8
+
+				return v.toString(16)
+			})
+		}
+
+		function onClipboardCopy() {
+			const uuid = $uuidInput?.value
+
+			if (!uuid) {
+				window.showSnackbar('No hay nada que copiar')
+				return false
+			}
+
+			navigator.clipboard.writeText(uuid).then(() => {
+				window.showSnackbar('Se ha copiado el UUID en el portapapeles')
+			})
+		}
+
+		function onLoad() {
+			if ($uuidInput) $uuidInput.value = onGenerateUUID()
+		}
+
+		if ($generateButton) $generateButton.addEventListener('click', onLoad)
+		if ($clipboardButton) $clipboardButton.addEventListener('click', onClipboardCopy)
+
+		onLoad()
+	})
+</script>
 
 <Layout title='Generador UUID'>
 	<section>
 		<h2 class='text-xl font-semibold text-gray-700 capitalize text-center sm:text-3xl'>Generador UUID</h2>
 
-		<UUIDGenerator client:only />
+		<div>
+			<section class='flex flex-col md:flex-row gap-4 w-full mt-12'>
+				<div class='flex flex-row bg-white col-span-3 p-1.5 overflow-hidden border rounded-lg w-full'>
+					<input
+						class='px-4 py-2 w-full text-gray-700 bg-transparent placeholder-gray-500 outline-none border-none'
+						type='text'
+						disabled
+						placeholder=''
+						aria-label='UUID Generado'
+						id='uuid-input'
+					/>
+
+					<Tooltip label='Copiar'>
+						<button
+							class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all hover:text-black'
+							id='clipboard-button'
+						>
+							<Clipboard />
+						</button>
+					</Tooltip>
+				</div>
+				<button
+					class='group inline-flex items-center justify-center gap-4 px-4 py-2.5 col-span-3 sm:sm:col-span-1 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 cursor-pointer disabled:cursor-not-allowed disabled:bg-slate-100 disabled:stroke-slate-400 disabled:text-slate-400 disabled:hover:bg-slate-100 active:scale-[0.95]'
+					id='generate-button'
+				>
+					<Refresh />
+					<span>Generar</span>
+				</button>
+			</section>
+		</div>
 	</section>
+
+	<Snackbar />
 </Layout>
