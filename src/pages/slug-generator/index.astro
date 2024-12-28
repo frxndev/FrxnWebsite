@@ -1,8 +1,110 @@
 ---
-import { SlugGenerator } from '@components/SlugGenerator'
 import Layout from '@layouts/Layout.astro'
+
+import Snackbar from '@/components/Snackbar.astro'
+import Tooltip from '@/components/Tooltip.astro'
+import Clipboard from '@/icons/clipboard.astro'
+import Trash from '@/icons/trash.astro'
 ---
 
+<script>
+	import { $ } from '@/lib/dom-selector'
+	import { crearSlug } from '@services/SlugGenerator'
+
+	document.addEventListener('astro:page-load', () => {
+		const $form = $('#slug-form') as HTMLFormElement
+		const $inputResult = $('#input-result') as HTMLInputElement
+		const $clipboardButton = $('#clipboard-button') as HTMLButtonElement
+		const $trashButton = $('#trash-button') as HTMLButtonElement
+
+		function onClipboardCopy() {
+			const uuid = $inputResult?.value
+
+			if (!uuid) {
+				window.showSnackbar('No hay nada que copiar')
+				return false
+			}
+
+			navigator.clipboard.writeText(uuid).then(() => {
+				window.showSnackbar('Se ha copiado el resultado en el portapapeles')
+			})
+		}
+
+		function onClear() {
+			$inputResult.setAttribute('value', '')
+			$trashButton.classList.add('hidden')
+		}
+
+		if ($form) {
+			$form?.addEventListener('submit', (evt) => {
+				evt.preventDefault()
+
+				const title = (evt.target as any).title.value
+
+				const result = crearSlug(title)
+
+				if (title !== '') {
+					$inputResult?.setAttribute('value', result)
+					$trashButton.classList.remove('hidden')
+				}
+			})
+		}
+
+		if ($clipboardButton) $clipboardButton.addEventListener('click', onClipboardCopy)
+		if ($trashButton) $trashButton.addEventListener('click', onClear)
+	})
+</script>
+
 <Layout title='Generador de Slug'>
-  <SlugGenerator client:only />
+	<section class='max-w-4xl p-6 mx-auto'>
+		<h2 class='text-xl font-semibold text-gray-700 capitalize text-center sm:text-3xl'>Generador de Slug</h2>
+
+		<form class='w-full' method='post' id='slug-form' name='slug-form'>
+			<div class='grid grid-cols-1 gap-6 mt-8 sm:grid-cols-3 items-end'>
+				<input
+					type='text'
+					id='title'
+					name='title'
+					placeholder='Titulo'
+					class='col-span-3 sm:sm:col-span-2 block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring'
+					autocomplete='off'
+				/>
+				<button
+					type='submit'
+					class='px-8 py-2.5 col-span-3 sm:sm:col-span-1 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'
+				>
+					Generar
+				</button>
+			</div>
+		</form>
+		<div class='flex flex-row bg-white col-span-3 p-1.5 overflow-hidden border rounded-lg mt-12'>
+			<input
+				class='px-2 py-2 w-full text-gray-700 bg-transparent placeholder-gray-500 outline-none border-none'
+				type='text'
+				disabled
+				placeholder='Slug convertido'
+				aria-label='Slug convertido'
+				id='input-result'
+			/>
+
+			<div class='flex flex-row gap-1'>
+				<Tooltip label='Limpiar'>
+					<button
+						class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all hidden text-red-500'
+						id='trash-button'
+					>
+						<Trash />
+					</button>
+				</Tooltip>
+
+				<Tooltip label='Copiar'>
+					<button class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all' id='clipboard-button'>
+						<Clipboard />
+					</button>
+				</Tooltip>
+			</div>
+		</div>
+	</section>
+
+	<Snackbar />
 </Layout>
