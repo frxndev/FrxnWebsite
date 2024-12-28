@@ -8,6 +8,7 @@ module.exports = withAnimations({
   theme: {
     extend: {
       fontFamily: {
+				sans: ['Inter', 'sans-serif'],
         monserrat: ['Montserrat', 'Inter', 'sans-serif']
       },
       keyframes: {

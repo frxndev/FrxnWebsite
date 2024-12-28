@@ -8,7 +8,9 @@ export default defineConfig({
   compressHTML: true,
   site: 'https://frxn.pages.dev',
   base: '/',
-  optimizeDeps: {},
+  optimizeDeps: {
+    include: ['react-compiler-runtime', 'react-dom', 'react']
+  },
   prefetch: false,
   experimental: {
     responsiveImages: true,
