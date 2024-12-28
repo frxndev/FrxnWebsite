@@ -1,7 +1,5 @@
-import React, { Fragment, useState, type FormEvent } from 'react'
-import { Toaster, toast } from 'sonner'
 import { crearSlug } from '@services/SlugGenerator'
-import { IconClipboard } from './IconClipboard'
+import React, { Fragment, useState, type FormEvent } from 'react'
 
 export const SlugGenerator: React.FC = () => {
   const [slug, setSlug] = useState('')
@@ -12,7 +10,6 @@ export const SlugGenerator: React.FC = () => {
     const { titulo } = e.target as HTMLFormElement
 
     if (titulo.value.trim() === '') {
-      toast.error('El titulo no puede estar vacio')
       setSlug('')
       return false
     }
@@ -23,19 +20,13 @@ export const SlugGenerator: React.FC = () => {
 
   const OnClipboardCopy = () => {
     if (slug === '') {
-      toast.error('No hay nada que copiar')
       return false
     }
 
-    const promise = navigator.clipboard.writeText(slug)
+    const promise = navigator.clipboard
+      .writeText(slug)
       .then(() => setCopiado(true))
       .catch(() => setCopiado(false))
-
-    toast.promise(promise, {
-      loading: 'Copiando...',
-      success: 'Copiado al portapapeles',
-      error: 'No se pudo copiar al portapapeles'
-    })
 
     setTimeout(() => {
       setCopiado(false)
@@ -44,7 +35,6 @@ export const SlugGenerator: React.FC = () => {
 
   return (
     <Fragment>
-      <Toaster richColors />
       <section className='max-w-4xl p-6 mx-auto'>
         <h2 className='text-xl font-semibold text-gray-700 capitalize text-center sm:text-3xl'>
           Generador de Slug
@@ -66,23 +56,21 @@ export const SlugGenerator: React.FC = () => {
             />
           </div>
         </form>
-				<div className='flex flex-row bg-white col-span-3 p-1.5 overflow-hidden border rounded-lg mt-12'>
-              <input
-                className='px-4 py-2 w-full text-gray-700 bg-transparent placeholder-gray-500 outline-none border-none'
-                type='text'
-                disabled
-                placeholder='Slug convertido'
-                aria-label='Slug convertido'
-                value={slug}
-              />
+        <div className='flex flex-row bg-white col-span-3 p-1.5 overflow-hidden border rounded-lg mt-12'>
+          <input
+            className='px-4 py-2 w-full text-gray-700 bg-transparent placeholder-gray-500 outline-none border-none'
+            type='text'
+            disabled
+            placeholder='Slug convertido'
+            aria-label='Slug convertido'
+            value={slug}
+          />
 
-              <button
-                className='px-4 py-4 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all'
-                onClick={OnClipboardCopy}
-              >
-                <IconClipboard className='w-5 h-5' isActive={copiado} />
-              </button>
-            </div>
+          <button
+            className='px-4 py-4 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all'
+            onClick={OnClipboardCopy}
+          ></button>
+        </div>
       </section>
     </Fragment>
   )
