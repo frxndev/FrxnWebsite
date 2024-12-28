@@ -11,7 +11,6 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react-compiler-runtime', 'react-dom', 'react']
   },
-  prefetch: false,
   experimental: {
     responsiveImages: true,
     svg: true
