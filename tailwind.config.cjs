@@ -7,8 +7,11 @@ module.exports = withAnimations({
   theme: {
     extend: {
       fontFamily: {
-				sans: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
         monserrat: ['Montserrat', 'Inter', 'sans-serif']
+      },
+      colors: {
+        primary: '#5481FF'
       },
       keyframes: {
         'reduce-header': {
@@ -38,6 +41,6 @@ module.exports = withAnimations({
       })
     },
     require('@tailwindcss/typography'),
-		require('@midudev/tailwind-animations')
+    require('@midudev/tailwind-animations')
   ]
 })
