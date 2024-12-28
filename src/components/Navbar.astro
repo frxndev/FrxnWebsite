@@ -1,8 +1,8 @@
 ---
 import ButtonLink from './ButtonLink.astro'
-import Logo from '../../public/favicon.svg'
-import XLogo from '../../public/images/icons/x.svg'
-import GithubLogo from '../../public/images/icons/github.svg'
+import Logo from '@/icons/logo.astro'
+import X from '@/icons/x.astro'
+import Github from '@/icons/github.astro'
 ---
 
 <script is:inline>
@@ -67,7 +67,7 @@ import GithubLogo from '../../public/images/icons/github.svg'
 				class='block text-slate-400 hover:text-[#1da1f2] transition-colors'
 				aria-label='Twitter profile'
 			>
-				<XLogo class='w-5 h-5' />
+				<X class='w-5 h-5' />
 			</a>
 			<a
 				href='https://github.com/frxndev'
@@ -75,7 +75,7 @@ import GithubLogo from '../../public/images/icons/github.svg'
 				class='ml-6 block text-slate-400 hover:text-slate-600 transition-colors'
 				aria-label='Github profile'
 			>
-				<GithubLogo class='w-5 h-5' />
+				<Github class='w-5 h-5' />
 			</a>
 			<!-- aria-expanded -->
 			<button
