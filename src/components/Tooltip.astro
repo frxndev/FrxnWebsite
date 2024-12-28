@@ -1,0 +1,29 @@
+---
+export interface Props {
+	label: string
+}
+
+const { label } = Astro.props
+---
+
+<style>
+	.tooltip {
+		@apply invisible absolute;
+	}
+
+	.has-tooltip:hover .tooltip {
+		@apply visible z-50;
+	}
+</style>
+
+<div class='has-tooltip'>
+	<span
+		class:list={[
+			'tooltip whitespace-nowrap rounded-md bg-white py-2 px-4 text-xs text-gray-800 font-medium transition-opacity duration-300 border border-gray-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]',
+			`-mt-10`
+		]}
+	>
+		{label}
+	</span>
+	<slot />
+</div>

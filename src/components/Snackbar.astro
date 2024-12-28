@@ -1,0 +1,23 @@
+<script>
+	function showSnackbar(newMessage: string) {
+		const snackbar = document.querySelector('#snackbar')
+		if (snackbar) {
+			snackbar.textContent = newMessage
+			snackbar.classList.add('opacity-100', 'scale-100')
+
+			setTimeout(() => {
+				snackbar.classList.remove('opacity-100', 'scale-100')
+				snackbar.textContent = ''
+			}, 3000)
+		}
+	}
+
+	window.showSnackbar = showSnackbar
+</script>
+
+<div
+	role='alert'
+	class='fixed bottom-4 right-4 max-w-96 mt-3 w-full p-3 text-base text-gray-600 bg-gray-50 rounded-md border-gray-200 border-opacity-50 border-2 shadow-sm opacity-0 scale-90 transition-opacity'
+	id='snackbar'
+>
+</div>
