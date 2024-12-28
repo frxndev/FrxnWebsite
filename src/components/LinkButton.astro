@@ -1,21 +1,14 @@
 ---
 export interface Props {
-	icon: string
 	title: string
 	description: string
 	href: string
 }
 
-const { icon, title, description, href } = Astro.props
+const { title, description, href } = Astro.props
 ---
 
-<a href={href}>
-	<div class='group flex justify-center items-center gap-2 p-4 rounded-lg border-2 hover:border-blue-500'>
-		<img src={`/images/tags/${icon}.svg`} alt=`Logo ${title}` class='w-8 h-8' />
-
-		<div class='pl-4'>
-			<p class='group-hover:text-blue-500 text-lg font-bold'>{title}</p>
-			<span class='group-hover:text-blue-500 text-sm'>{description}</span>
-		</div>
-	</div>
+<a href={href} class='group flex flex-col items-start gap-2 p-4 rounded-lg border-2 hover:border-blue-500 h-full max-h-40'>
+	<span class='group-hover:text-blue-500 text-lg font-sans font-bold'>{title}</span>
+	<span class='group-hover:text-blue-500 text-sm font-sans line-clamp-3'>{description}</span>
 </a>
