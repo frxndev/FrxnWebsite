@@ -6,11 +6,13 @@ import Snackbar from '@/components/Snackbar.astro'
 import Tooltip from '@/components/Tooltip.astro'
 ---
 
-<script is:inline>
+<script>
+	import { $ } from '@/lib/dom-selector'
+
 	document.addEventListener('astro:page-load', () => {
-		const $uuidInput = document.getElementById('uuid-input')
-		const $generateButton = document.getElementById('generate-button')
-		const $clipboardButton = document.getElementById('clipboard-button')
+		const $uuidInput = $('#uuid-input') as HTMLInputElement
+		const $generateButton = $('#generate-button') as HTMLButtonElement
+		const $clipboardButton = $('#clipboard-button') as HTMLButtonElement
 
 		function onGenerateUUID() {
 			return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
