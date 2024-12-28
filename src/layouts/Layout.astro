@@ -11,6 +11,7 @@ import '@fontsource/montserrat/700.css'
 import { ClientRouter } from 'astro:transitions'
 
 import Navbar from '../components/Navbar.astro'
+import Toast from "@/components/ui/Toast.astro"
 
 interface Props {
 	title: string
@@ -40,9 +41,10 @@ const { title } = Astro.props
 	</head>
 	<body class='text-gray-700 overflow-x-hidden font-sans transition-colors'>
 		<Navbar />
-		<main class='max-w-5xl m-auto mt-14 mb-24 px-4 pb-20 pt-14'>
+		<main class='max-w-5xl m-auto mt-14 pb-8 pt-14'>
 			<slot />
 		</main>
+		<Toast />
 		<style is:global>
 			html {
 				scroll-behavior: smooth;
