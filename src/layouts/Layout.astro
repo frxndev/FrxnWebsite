@@ -1,15 +1,10 @@
 ---
-import '@fontsource/poppins/400.css'
-import '@fontsource/poppins/500.css'
-import '@fontsource/poppins/600.css'
-import '@fontsource/poppins/700.css'
+import { ClientRouter } from 'astro:transitions';
 
 import Navbar from '../components/Navbar.astro'
 
-import { ViewTransitions } from 'astro:transitions'
-
 interface Props {
-  title: string
+	title: string
 }
 
 const { title } = Astro.props
@@ -17,58 +12,54 @@ const { title } = Astro.props
 
 <!doctype html>
 <html lang='en'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='description' content='frxndev | Desarrollador web' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:site' content='@frxndev' />
-    <meta name='twitter:creator' content='@frxndev' />
-    <meta property='og:title' content='frxndev | Desarrollador web' />
-    <meta
-      property='og:description'
-      content='Artículos sobre Desarrollo Web, Frontend, JavaScript ☕️, Angular ⚛️'
-    />
-    <meta property='og:image' content='/favicon.svg' />
-    <meta property='og:url' content='https://frxn.pages.dev' />
-    <meta property='og:type' content='website' />
-    <meta name='generator' content={Astro.generator} />
-    <ViewTransitions />
-    <title>{title}</title>
-  </head>
-  <body class='dark:bg-[#030712] transition-colors'>
-    <Navbar />
-    <main class='max-w-5xl m-auto mt-14 mb-24 px-4'>
-      <slot />
-    </main>
-    <style is:global>
-      html {
-        font-family: 'Poppins', system-ui, sans-serif !important;
-        scroll-behavior: smooth;
-      }
-      body::before {
-        @apply content-[''] blur-[100px] w-[300px] h-[300px] absolute left-[-50px] z-[-1] top-[100px];
-        background: rgb(0 153 255/0.1);
-      }
-      ::-webkit-scrollbar {
-        width: 16px;
-        height: 12px;
-      }
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='frxndev | Desarrollador web' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='twitter:card' content='summary_large_image' />
+		<meta name='twitter:site' content='@frxndev' />
+		<meta name='twitter:creator' content='@frxndev' />
+		<meta property='og:title' content='frxndev | Desarrollador web' />
+		<meta property='og:description' content='Artículos sobre Desarrollo Web, Frontend, JavaScript ☕️, Angular ⚛️' />
+		<meta property='og:image' content='/favicon.svg' />
+		<meta property='og:url' content='https://frxn.pages.dev' />
+		<meta property='og:type' content='website' />
+		<meta name='generator' content={Astro.generator} />
+		<ClientRouter />
+		<title>frxndev - {title}</title>
+	</head>
+	<body class='text-gray-700 overflow-x-hidden font-sans transition-colors'>
+		<Navbar />
+		<main class='max-w-5xl m-auto mt-14 mb-24 px-4 pb-20 pt-14'>
+			<slot />
+		</main>
+		<style is:global>
+			html {
+				scroll-behavior: smooth;
+			}
+			body::before {
+				@apply content-[''] blur-[100px] w-[300px] h-[300px] absolute left-[-50px] z-[-1] top-[100px];
+				background: rgb(0 153 255/0.1);
+			}
+			::-webkit-scrollbar {
+				width: 16px;
+				height: 12px;
+			}
 
-      ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 50px;
-        border: 4px solid #fff;
-      }
+			::-webkit-scrollbar-thumb {
+				background: rgba(0, 0, 0, 0.2);
+				border-radius: 50px;
+				border: 4px solid #fff;
+			}
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.4);
-      }
+			::-webkit-scrollbar-thumb:hover {
+				background: rgba(0, 0, 0, 0.4);
+			}
 
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-    </style>
-  </body>
+			::-webkit-scrollbar-track {
+				background: transparent;
+			}
+		</style>
+	</body>
 </html>

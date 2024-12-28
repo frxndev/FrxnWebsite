@@ -6,8 +6,15 @@ import react from '@astrojs/react'
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
+  site: 'https://frxn.pages.dev',
+  base: '/',
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-compiler-runtime']
+    include: ['react-compiler-runtime']
+  },
+  prefetch: false,
+  experimental: {
+    responsiveImages: true,
+    svg: true
   },
   integrations: [tailwind(), react()]
 })

@@ -5,20 +5,13 @@
     "allowJs": true,
     "isolatedModules": true,
     "moduleResolution": "node",
-    "types": [
-      "astro/client"
-    ],
+    "types": ["astro/client"],
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ]
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@services/*": ["src/services/*"],
+      "@pages/*": ["src/pages/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
