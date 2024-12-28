@@ -1,5 +1,4 @@
 const { withAnimations } = require('animated-tailwindcss') // eslint-disable-line
-const plugin = require('tailwindcss/plugin')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withAnimations({
@@ -38,6 +37,7 @@ module.exports = withAnimations({
         }
       })
     },
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+		require('@midudev/tailwind-animations')
   ]
 })
