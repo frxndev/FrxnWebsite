@@ -7,6 +7,9 @@ module.exports = withAnimations({
   darkMode: 'class', // or 'media'
   theme: {
     extend: {
+      fontFamily: {
+        monserrat: ['Montserrat', 'Inter', 'sans-serif']
+      },
       keyframes: {
         'reduce-header': {
           '100%': {

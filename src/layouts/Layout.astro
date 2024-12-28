@@ -1,5 +1,10 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import '@fontsource/montserrat/400.css'
+import '@fontsource/montserrat/500.css'
+import '@fontsource/montserrat/600.css'
+import '@fontsource/montserrat/700.css'
+
+import { ClientRouter } from 'astro:transitions'
 
 import Navbar from '../components/Navbar.astro'
 
@@ -37,6 +42,11 @@ const { title } = Astro.props
 		<style is:global>
 			html {
 				scroll-behavior: smooth;
+				font-family:
+					Inter,
+					Inter Prevent Layout Shift,
+					system-ui,
+					sans-serif;
 			}
 			body::before {
 				@apply content-[''] blur-[100px] w-[300px] h-[300px] absolute left-[-50px] z-[-1] top-[100px];
