@@ -2,7 +2,6 @@
 import Layout from '@layouts/Layout.astro'
 import Clipboard from '@/icons/clipboard.astro'
 import Refresh from '@/icons/refresh.astro'
-import Snackbar from '@/components/Snackbar.astro'
 import Tooltip from '@/components/Tooltip.astro'
 ---
 
@@ -27,12 +26,18 @@ import Tooltip from '@/components/Tooltip.astro'
 			const uuid = $uuidInput?.value
 
 			if (!uuid) {
-				window.showSnackbar('No hay nada que copiar')
+				window.toast({
+					title: 'No hay nada que copiar',
+					type: 'info'
+				})
 				return false
 			}
 
 			navigator.clipboard.writeText(uuid).then(() => {
-				window.showSnackbar('Se ha copiado el UUID en el portapapeles')
+				window.toast({
+					title: 'Se ha copiado el resultado en el portapapeles',
+					type: 'success'
+				})
 			})
 		}
 
@@ -82,6 +87,4 @@ import Tooltip from '@/components/Tooltip.astro'
 			</section>
 		</div>
 	</section>
-
-	<Snackbar />
 </Layout>
