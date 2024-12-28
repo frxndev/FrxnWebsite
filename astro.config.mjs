@@ -6,8 +6,8 @@ import react from '@astrojs/react'
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  // redirects: {
-  //   '/': '/blog'
-  // },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-compiler-runtime']
+  },
   integrations: [tailwind(), react()]
 })
