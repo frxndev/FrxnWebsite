@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro'
+---
+
+<script>
+	import { base64ToBlob, isValidBase64 } from '@/lib/convert-base64-blob'
+	import { $ } from '@/lib/dom-selector'
+
+	document.addEventListener('astro:page-load', () => {
+		const $base64Text = $('#base64-text') as HTMLTextAreaElement
+		const $decodeButton = $('#decode-button') as HTMLButtonElement
+		const $resultContainer = $('#result-container') as HTMLDivElement
+
+		const MIME_TYPE = 'application/pdf'
+
+		$decodeButton?.addEventListener('click', () => {
+			const base64 = $base64Text.value
+
+			if (base64 === '' || base64 === null) {
+				window.toast({
+					title: 'No se ingreso ninguna cadena de texto',
+					type: 'info'
+				})
+
+				return
+			}
+
+			const isValid = isValidBase64(base64)
+
+			if (!isValid) {
+				window.toast({
+					title: 'Se ingreso una cadena de texto invalida',
+					type: 'warning'
+				})
+
+				return
+			}
+
+			const blob = base64ToBlob(base64, MIME_TYPE)
+			const result = URL.createObjectURL(blob)
+
+			const iframe = document.createElement('iframe')
+			iframe.style.width = '100%'
+			iframe.style.height = '100%'
+			iframe.classList.add('animate-fade-in')
+			iframe.src = result
+
+			if ($resultContainer === null) return
+
+			$resultContainer.innerHTML = ''
+			$resultContainer.appendChild(iframe)
+		})
+	})
+</script>
+
+<Layout title='Decodificar Base64 a PDF'>
+	<section>
+		<h2 class='text-center m-auto font-medium text-lg mb-2'>Decodificar Base64 a PDF</h2>
+		<article class='flex flex-col md:grid md:grid-cols-2 md:grid-rows-1 gap-4'>
+			<div class='flex flex-col md:grid md:grid-rows-1 md:grid-cols-1 space-y-4'>
+				<textarea
+					id='base64-text'
+					class='w-full h-[25vh] md:h-[65vh] border border-slate-200 appearance-none rounded px-3.5 py-2.5 outline-none focus:ring-1 resize-none box-border'
+					placeholder='Ingrese la cadena base64...'></textarea>
+
+				<button
+					id='decode-button'
+					class='inline-flex items-center justify-center gap-4 px-4 py-2.5 col-span-3 sm:sm:col-span-1 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 cursor-pointer active:scale-[0.95]'
+				>
+					Decodificar
+				</button>
+			</div>
+
+			<div class='relative'>
+				<div
+					id='result-container'
+					class='w-full h-[75vh] md:h-full border border-slate-200 appearance-none rounded outline-none focus:bg-white focus:border-primary focus:ring-2 resize-none box-border relative overflow-hidden'
+				>
+				</div>
+			</div>
+		</article>
+	</section>
+</Layout>
