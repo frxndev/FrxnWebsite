@@ -77,7 +77,7 @@ export const butterup: ButterupProps = {
         }
       })
       if (location == null) {
-        toaster.className = 'toaster top-right'
+        toaster.className = 'toaster bottom-right'
       } else {
         toaster.className = `toaster ${location}`
       }
