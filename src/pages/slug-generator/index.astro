@@ -1,7 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro'
 
-import Snackbar from '@/components/Snackbar.astro'
 import Tooltip from '@/components/Tooltip.astro'
 import Clipboard from '@/icons/clipboard.astro'
 import Trash from '@/icons/trash.astro'
@@ -21,12 +20,18 @@ import Trash from '@/icons/trash.astro'
 			const uuid = $inputResult?.value
 
 			if (!uuid) {
-				window.showSnackbar('No hay nada que copiar')
+				window.toast({
+					title: 'No hay nada que copiar',
+					type: 'info'
+				})
 				return false
 			}
 
 			navigator.clipboard.writeText(uuid).then(() => {
-				window.showSnackbar('Se ha copiado el resultado en el portapapeles')
+				window.toast({
+					title: 'Se ha copiado el resultado en el portapapeles',
+					type: 'success'
+				})
 			})
 		}
 
@@ -105,6 +110,4 @@ import Trash from '@/icons/trash.astro'
 			</div>
 		</div>
 	</section>
-
-	<Snackbar />
 </Layout>

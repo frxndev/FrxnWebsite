@@ -1,7 +1,8 @@
-const { withAnimations } = require('animated-tailwindcss') // eslint-disable-line
-
 /** @type {import('tailwindcss').Config} */
-module.exports = withAnimations({
+import animations from '@midudev/tailwind-animations'
+import prose from '@tailwindcss/typography'
+
+export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class', // or 'media'
   theme: {
@@ -40,7 +41,7 @@ module.exports = withAnimations({
         }
       })
     },
-    require('@tailwindcss/typography'),
-    require('@midudev/tailwind-animations')
+    prose,
+    animations
   ]
-})
+}
