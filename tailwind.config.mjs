@@ -12,7 +12,20 @@ export default {
         monserrat: ['Montserrat', 'Inter', 'sans-serif']
       },
       colors: {
-        primary: '#5481FF'
+        brand: {
+          primary: '#5481FF',
+          50: '#eef3ff',
+          100: '#dae3ff',
+          200: '#bdcfff',
+          300: '#90b0ff',
+          400: '#5481ff',
+          500: '#355cfc',
+          600: '#1f3af1',
+          700: '#1726de',
+          800: '#1921b4',
+          900: '#1a238e',
+          950: '#151856'
+        }
       },
       keyframes: {
         'reduce-header': {
