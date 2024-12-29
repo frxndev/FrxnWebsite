@@ -1,0 +1,19 @@
+---
+export interface Props {
+	href: string
+	label: string
+	prefix?: '#' | '@' | '' | string
+}
+
+const { href, label, prefix = '#' } = Astro.props
+---
+
+<a
+	href={href}
+	class:list={[
+		'inline-flex items-center flex-nowrap rounded-xl border border-transparent transition-all text-sm px-3 py-1 duration-300',
+		'hover:bg-brand-50 hover:border-brand-300'
+	]}
+>
+	<span>{prefix}</span>{label}
+</a>
