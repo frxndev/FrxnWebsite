@@ -57,6 +57,16 @@ const { title } = Astro.props
 			body::before {
 				@apply content-[''] blur-[100px] w-[300px] h-[300px] absolute left-[-50px] z-[-1] top-[100px] bg-brand-100;
 			}
+
+			@keyframes reduce {
+				100% {
+					background: #fffffff2;
+					padding-block: 1rem;
+					-webkit-backdrop-filter: blur(10px);
+					backdrop-filter: blur(10px);
+				}
+			}
+
 			::-webkit-scrollbar {
 				width: 16px;
 				height: 12px;

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import animations from '@midudev/tailwind-animations'
 import prose from '@tailwindcss/typography'
+import plugin from 'tailwindcss/plugin'
 
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -26,35 +27,24 @@ export default {
           900: '#1a238e',
           950: '#151856'
         }
-      },
-      keyframes: {
-        'reduce-header': {
-          '100%': {
-            boxShadow: '0 5px 50px -5px #ffffff1a, 0 0 0 1px #ffffff1a',
-            paddingBlock: '1rem',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)'
-          }
-        }
       }
     }
   },
   plugins: [
-    function ({ addComponents, theme }) {
+    prose,
+    animations,
+    plugin(function ({ addComponents, theme }) {
       addComponents({
         '.header-animate': {
-          background: '#ffffff66',
           position: 'fixed',
           top: '0',
           left: '0',
           right: '0',
-          animation: 'reduce-header linear both',
+          animation: 'reduce linear both',
           animationTimeline: 'scroll()',
           animationRange: '0 150px'
         }
       })
-    },
-    prose,
-    animations
+    })
   ]
 }
