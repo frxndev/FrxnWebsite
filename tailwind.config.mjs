@@ -31,7 +31,6 @@ export default {
         'reduce-header': {
           '100%': {
             boxShadow: '0 5px 50px -5px #ffffff1a, 0 0 0 1px #ffffff1a',
-            background: '#0000004d',
             paddingBlock: '1rem',
             backdropFilter: 'blur(10px)',
             WebkitBackdropFilter: 'blur(10px)'
@@ -44,6 +43,7 @@ export default {
     function ({ addComponents, theme }) {
       addComponents({
         '.header-animate': {
+          background: '#ffffff66',
           position: 'fixed',
           top: '0',
           left: '0',
