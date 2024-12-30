@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro'
+
 import Clipboard from '@/icons/clipboard.astro'
 import Refresh from '@/icons/refresh.astro'
-import Tooltip from '@/components/Tooltip.astro'
 ---
 
 <script>
@@ -68,14 +68,13 @@ import Tooltip from '@/components/Tooltip.astro'
 						id='uuid-input'
 					/>
 
-					<Tooltip label='Copiar'>
-						<button
-							class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all hover:text-black'
-							id='clipboard-button'
-						>
-							<Clipboard />
-						</button>
-					</Tooltip>
+					<button
+						id='clipboard-button'
+						class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all hover:text-black'
+						data-tooltip='Copiar'
+					>
+						<Clipboard />
+					</button>
 				</div>
 				<button
 					class='group inline-flex items-center justify-center gap-4 px-4 py-2.5 col-span-3 sm:sm:col-span-1 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 cursor-pointer disabled:cursor-not-allowed disabled:bg-slate-100 disabled:stroke-slate-400 disabled:text-slate-400 disabled:hover:bg-slate-100 active:scale-[0.95]'

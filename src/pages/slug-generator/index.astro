@@ -1,7 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro'
 
-import Tooltip from '@/components/Tooltip.astro'
 import Clipboard from '@/icons/clipboard.astro'
 import Trash from '@/icons/trash.astro'
 ---
@@ -93,20 +92,21 @@ import Trash from '@/icons/trash.astro'
 			/>
 
 			<div class='flex flex-row gap-1'>
-				<Tooltip label='Limpiar'>
-					<button
-						class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all hidden text-red-500'
-						id='trash-button'
-					>
-						<Trash />
-					</button>
-				</Tooltip>
+				<button
+					id='trash-button'
+					class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all hidden text-red-500'
+					data-tooltip='Limpiar'
+				>
+					<Trash />
+				</button>
 
-				<Tooltip label='Copiar'>
-					<button class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all' id='clipboard-button'>
-						<Clipboard />
-					</button>
-				</Tooltip>
+				<button
+					id='clipboard-button'
+					class='px-2 py-2 bg-gray-100 rounded-md hover:bg-gray-200 focus:duration-[900ms] transition-all'
+					data-tooltip='Copiar'
+				>
+					<Clipboard />
+				</button>
 			</div>
 		</div>
 	</section>
