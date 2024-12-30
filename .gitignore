@@ -13,15 +13,30 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-#  lock
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
 # environment variables
 .env
 .env.production
 
 # macOS-specific files
 .DS_Store
-\n.astro
+
+# packages
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# .vs folder
+.vs/
+.idea
+
+# generated vercel output
+.vercel/
+
+.env
+.env.local
+
+.config/*
+
+local-images/*
+src/middleware.tsall
+.vercel
