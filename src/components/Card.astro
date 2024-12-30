@@ -11,12 +11,12 @@ const { title, date, tags, slug } = Astro.props
 
 <a href={`/blog/${slug}`}>
   <article
-    class='group w-full mt-6 bg-white rounded-lg border hover:scale-[1.01] transition-all dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-600'
+    class='group w-full mt-6 bg-white rounded-lg border hover:scale-[1.01] transition-all'
   >
     <div class='p-4 sm:p-6'>
       <time
         datetime='2022-10-10'
-        class='block text-xs text-gray-500 dark:text-gray-400'
+        class='block text-xs text-gray-500'
       >
         {
           date.toLocaleDateString('es-MX', {
@@ -27,7 +27,7 @@ const { title, date, tags, slug } = Astro.props
         }
       </time>
 
-      <p class='mt-0.5 text-lg font-medium text-gray-900 dark:text-gray-200'>
+      <p class='mt-0.5 text-lg font-medium text-gray-900'>
         {title}
 			</p>
 
