@@ -1,9 +1,11 @@
 ---
 import { getCollection } from 'astro:content'
 
+import Layout from '@layouts/Layout.astro'
+
+import ArrowLeft from '@/icons/arrow-left.astro'
 import ButtonShare from '@components/ButtonShare.astro'
 import ButtonTag from '@components/ButtonTag.astro'
-import Layout from '@layouts/Layout.astro'
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -20,8 +22,8 @@ const { Content } = await entry.render()
 ---
 
 <Layout title={entry.data.title}>
-	<article class='mx-auto'>
-		<h1 class='text-black font-bold text-4xl md:text-5xl mb-3'>
+	<article class='mx-auto mt-8'>
+		<h1 class='text-black font-bold text-4xl text-pretty hyphens-auto md:text-5xl mb-3'>
 			{entry.data.title}
 		</h1>
 		<section class='mb-4 flex flex-col space-y-2'>
@@ -45,9 +47,14 @@ const { Content } = await entry.render()
 		<div class='text-black mx-auto min-w-full prose prose-lg mt-12'>
 			<Content />
 		</div>
-		<div class='mt-8'>
-			<a href='/blog' class='bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition'> ← Regresar al Blog</a>
-		</div>
+
+		<a
+			href='/blog'
+			class='inline-flex items-center space-x-2 bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition mt-8 mb-20 md:mb-0'
+		>
+			<ArrowLeft class='w-6 h-6' />
+			<span>Regresar al Blog</span>
+		</a>
 	</article>
 	<ButtonShare />
 </Layout>
