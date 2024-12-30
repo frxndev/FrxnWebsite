@@ -15,6 +15,7 @@ export default {
       colors: {
         brand: {
           primary: '#5481FF',
+          gray: '#acb5c7',
           50: '#eef3ff',
           100: '#dae3ff',
           200: '#bdcfff',
