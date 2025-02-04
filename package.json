@@ -17,7 +17,7 @@
     "@fontsource/inter": "^5.1.0",
     "@fontsource/montserrat": "^5.1.0",
     "@midudev/tailwind-animations": "^0.1.0",
-    "astro": "^5.1.1",
+    "astro": "^5.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rehype-accessible-emojis": "^0.3.2",
