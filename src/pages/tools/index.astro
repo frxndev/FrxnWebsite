@@ -1,0 +1,38 @@
+---
+import LinkButton from '@components/LinkButton.astro'
+import Layout from '@layouts/Layout.astro'
+---
+
+<Layout title='Herramientas'>
+	<main class='py-4'>
+		<h1 class='text-gray-600 text-center font-medium mb-4 text-lg'>Herramientas</h1>
+
+		<div class='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4'>
+			<LinkButton
+				href='/uuid-generator'
+				title='Generador UUID'
+				description='Genera un UUID Versión 4, este es un identificador único universal que se genera utilizando números aleatorios.'
+			/>
+
+			<LinkButton
+				href='/slug-generator'
+				title='Generador de slug'
+				description='Genera slugs SEO-friendly a partir de títulos o cualquier otra cadena para tus páginas web o entradas de blog'
+			/>
+
+			<LinkButton
+				href='/base64-pdf'
+				title='Base64 a PDF'
+				description='Decodifica una cadena base64 a PDF, de modo que pueda previsualizarla en su navegador y descargarla como archivo PDF en su dispositivo.'
+			/>
+
+			<LinkButton
+				href='https://wasend.pages.dev/'
+				title='WaSend'
+				description='Una herramienta para enviar mensaje de whatsapp sin registrar el número de teléfono'
+				target='_blank'
+				rel='noopener noreferrer'
+			/>
+		</div>
+	</main>
+</Layout>
