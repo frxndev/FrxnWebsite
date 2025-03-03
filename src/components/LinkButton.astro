@@ -9,7 +9,11 @@ export interface Props {
 const { title, description, href, ...props } = Astro.props
 ---
 
-<a href={href} class='group flex flex-col items-start gap-2 p-4 rounded-lg border-2 hover:border-brand-200 h-full max-h-40' {...props}>
+<a
+	href={href}
+	class='group flex flex-col items-start gap-2 p-4 rounded-lg border-2 border-gray-200 hover:border-brand-200 h-full max-h-40'
+	{...props}
+>
 	<span class='group-hover:text-brand-primary text-lg font-sans font-bold'>{title}</span>
 	<span class='group-hover:text-brand-300 text-sm font-sans line-clamp-3'>{description}</span>
 </a>
