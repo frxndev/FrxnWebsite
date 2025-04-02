@@ -3,6 +3,8 @@
 @plugin '@tailwindcss/typography';
 @plugin '@midudev/tailwind-animations';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Inter', 'sans-serif';
   --font-monserrat: 'Montserrat', 'Inter', 'sans-serif';
