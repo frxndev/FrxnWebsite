@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+@plugin '@midudev/tailwind-animations';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', 'sans-serif';
+  --font-monserrat: 'Montserrat', 'Inter', 'sans-serif';
+
+  --color-brand-primary: #5481ff;
+  --color-brand-gray: #acb5c7;
+  --color-brand-50: #eef3ff;
+  --color-brand-100: #dae3ff;
+  --color-brand-200: #bdcfff;
+  --color-brand-300: #90b0ff;
+  --color-brand-400: #5481ff;
+  --color-brand-500: #355cfc;
+  --color-brand-600: #1f3af1;
+  --color-brand-700: #1726de;
+  --color-brand-800: #1921b4;
+  --color-brand-900: #1a238e;
+  --color-brand-950: #151856;
+
+  --animate-reduce: reduce linear both;
+
+  @keyframes reduce {
+    100% {
+      background: #fffffff2;
+      padding-block: 1rem;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+  }
+}
+
+@layer components {
+  .header-animate {
+    @apply fixed animate-reduce top-0 inset-x-0;
+    animation-timeline: scroll();
+    animation-range: 0 150px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family:
+    Inter,
+    Inter Prevent Layout Shift,
+    system-ui,
+    sans-serif;
+}
+
+body::before {
+  @apply content-[''] blur-[100px] w-[300px] h-[300px] absolute left-[-50px] z-[-1] top-[100px] bg-brand-100;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  border: 4px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}

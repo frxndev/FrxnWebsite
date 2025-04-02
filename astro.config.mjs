@@ -1,7 +1,6 @@
-import tailwind from '@astrojs/tailwind'
 import { defineConfig } from 'astro/config'
 
-import react from '@astrojs/react'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,8 +10,9 @@ export default defineConfig({
   compressHTML: true,
   site: 'https://frxn.pages.dev',
   base: '/',
-  optimizeDeps: {
-    include: ['react-compiler-runtime', 'react-dom', 'react']
+  redirects: {
+    '/': '/tools',
+    '/portfolio': '/tools'
   },
   experimental: {
     responsiveImages: true,
@@ -22,5 +22,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
-  integrations: [tailwind(), react()]
+  vite: {
+    plugins: [tailwindcss()]
+  }
 })
